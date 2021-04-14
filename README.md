@@ -1,0 +1,7 @@
+# BUG TRACKING SYSTEM
+
+O firma producatoare de software pune la dispozitia programatorilor si verificatorilor sai un sistem prin care acestia pot sa comunice electronic. Astfel, fiecare dintre angajatii mentionati are la dispoziție un terminal prin care:  
++ verificatorul  poate  înregistra  un  bug,  dându-i  o  denumire, o  descriere si o prioritate;  imediat  dupa înregistrarea bug-ului, toti  programatorii vad  lista bug-urilor  actualizata cu obiectul nou introdus. Lista va putea fi sortata dupa data in care a fost adaugat bug-ul sau dupa prioritatea acestuia  
++ programatorul poate sa isi asigneze un bug din lista printr-un buton in momentul in care incepe sa lucreze la acel bug, moment in care bug-ul nu mai poate fi preluat de alti programatori  
++ programatorul vizualizeaza lista bug-urilor; de asemenea, programatorul poate selecta un bug din lista si poate declansa un buton prin care trimite o noua cerere de verificare daca bug-ul a fost eliminat. Verificatorul poate sa accepte cererea, caz în care bug-ul este scos din lista tuturor programatorilor si este incrementat scorul programatorului, sau poate sa o respinga, iar atunci programatorul va fi notificat cu un mesaj corespunzator  
++ utilizatorii aplicatiei pot accesa un rank list cu cei mai activi programatori (programatorii care au rezolvat cel mai multe bug-uri). Programatorii din rank-list pot fi filtrati in functie nr. de bug-uri pe care le-a rezolvat intr-un interval de timp  
