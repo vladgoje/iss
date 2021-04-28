@@ -1,0 +1,5 @@
+rootProject.name = 'bug_traking_system'
+include 'persistence'
+include 'model'
+include 'services'
+
