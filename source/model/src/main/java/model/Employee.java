@@ -1,16 +1,27 @@
 package model;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
     Long id;
     String username;
     String password;
     Float salary;
+
+    public Employee() {
+    }
 
     public Employee(Long id, String username, String password, Float salary) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.salary = salary;
+    }
+
+    public Employee(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.salary = -1F;
     }
 
     public Long getId() {

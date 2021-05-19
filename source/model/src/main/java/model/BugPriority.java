@@ -1,5 +1,7 @@
 package model;
 
-public enum BugPriority {
+import java.io.Serializable;
+
+public enum BugPriority implements Serializable {
     LOW, MEDIUM, HIGH
 }

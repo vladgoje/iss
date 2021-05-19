@@ -21,9 +21,9 @@ public class VerifierRepository implements VerifierRepositoryInterface {
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
-                Verifier concurent = session.createQuery("from Verifier v where v.id like :id", Verifier.class).setParameter("id", aLong).setMaxResults(1).uniqueResult();
+                Verifier verifier = session.createQuery("from Verifier v where v.id like :id", Verifier.class).setParameter("id", aLong).setMaxResults(1).uniqueResult();
                 tx.commit();
-                return concurent;
+                return verifier;
             } catch (RuntimeException ex) {
                 if (tx != null)
                     tx.rollback();
@@ -38,9 +38,29 @@ public class VerifierRepository implements VerifierRepositoryInterface {
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
-                Verifier concurent = session.createQuery("from Verifier v where v.username like :username", Verifier.class).setParameter("username", username).setMaxResults(1).uniqueResult();
+                Verifier verifier = session.createQuery("from Verifier v where v.username like :username", Verifier.class).setParameter("username", username).setMaxResults(1).uniqueResult();
                 tx.commit();
-                return concurent;
+                return verifier;
+            } catch (RuntimeException ex) {
+                if (tx != null)
+                    tx.rollback();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Verifier findByCredentials(String username, String password) {
+        try(Session session = dbUtils.getSessionFactory().openSession()) {
+            Transaction tx = null;
+            try {
+                tx = session.beginTransaction();
+                Verifier verifier = session.createQuery("from Verifier v where v.username like :username and v.password like :password", Verifier.class)
+                        .setParameter("username", username)
+                        .setParameter("password", password)
+                        .setMaxResults(1).uniqueResult();
+                tx.commit();
+                return verifier;
             } catch (RuntimeException ex) {
                 if (tx != null)
                     tx.rollback();
@@ -55,9 +75,9 @@ public class VerifierRepository implements VerifierRepositoryInterface {
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
-                List<Verifier> concurenti = session.createQuery("from Verifier", Verifier.class).list();
+                List<Verifier> verifiers = session.createQuery("from Verifier", Verifier.class).list();
                 tx.commit();
-                return concurenti;
+                return verifiers;
             } catch (RuntimeException ex) {
                 if (tx != null)
                     tx.rollback();
@@ -74,13 +94,17 @@ public class VerifierRepository implements VerifierRepositoryInterface {
                 tx = session.beginTransaction();
                 session.save(entity);
                 tx.commit();
-                return null;
+
+                tx = session.beginTransaction();
+                List<Verifier> verifiers = session.createQuery("FROM Verifier v ORDER BY v.id DESC", Verifier.class).setMaxResults(1).list();
+                tx.commit();
+                return verifiers.get(0);
             } catch (RuntimeException ex) {
                 if (tx != null)
                     tx.rollback();
             }
         }
-        return entity;
+        return null;
     }
 
     @Override
@@ -117,13 +141,13 @@ public class VerifierRepository implements VerifierRepositoryInterface {
                 verifier.setSalary(entity.getSalary());
                 session.update(verifier);
                 tx.commit();
-                return null;
+                return entity;
             } catch(RuntimeException ex){
                 if (tx!=null)
                     tx.rollback();
             }
         }
-        return entity;
+        return null;
     }
 
     @Override

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="bugRepo" class="persistence.HbmRepository.BugRepository"/>
+    <bean id="veriferRepo" class="persistence.HbmRepository.VerifierRepository"/>
+    <bean id="programmerRepo" class="persistence.HbmRepository.ProgrammerRepository"/>
+
+    <bean id="bugTrackingSystemService" class="server.Service">
+        <constructor-arg ref="bugRepo"/>
+        <constructor-arg ref="veriferRepo"/>
+        <constructor-arg ref="programmerRepo"/>
+    </bean>
+
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="BugTrackingSystem"/>
+        <property name="service" ref="bugTrackingSystemService"/>
+        <property name="serviceInterface" value="services.IService"/>
+        <property name="servicePort" value="1099"/>
+    </bean>
+
+
+</beans>

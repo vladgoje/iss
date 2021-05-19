@@ -1,10 +1,20 @@
 package model;
 
-public class Bug {
+import java.io.Serializable;
+
+public class Bug implements Serializable {
     Long id;
     String name;
     String description;
     BugPriority priority;
+
+    public Bug() { }
+
+    public Bug(String name, String description, BugPriority priority) {
+        this.name = name;
+        this.description = description;
+        this.priority = priority;
+    }
 
     public Bug(Long id, String name, String description, BugPriority priority) {
         this.id = id;

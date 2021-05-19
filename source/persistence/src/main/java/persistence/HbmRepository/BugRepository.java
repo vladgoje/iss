@@ -58,13 +58,18 @@ public class BugRepository implements BugRepositoryInterface {
                 tx = session.beginTransaction();
                 session.save(entity);
                 tx.commit();
-                return null;
+
+
+                tx = session.beginTransaction();
+                List<Bug> bugs = session.createQuery("FROM Bug b ORDER BY b.id DESC", Bug.class).setMaxResults(1).list();
+                tx.commit();
+                return bugs.get(0);
             } catch (RuntimeException ex) {
                 if (tx != null)
                     tx.rollback();
             }
         }
-        return entity;
+        return null;
     }
 
     @Override
@@ -100,13 +105,13 @@ public class BugRepository implements BugRepositoryInterface {
                 bug.setPriority(entity.getPriority());
                 session.update(bug);
                 tx.commit();
-                return null;
+                return entity;
             } catch(RuntimeException ex){
                 if (tx!=null)
                     tx.rollback();
             }
         }
-        return entity;
+        return null;
     }
 
     @Override

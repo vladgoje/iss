@@ -10,6 +10,16 @@ public class ProgrammerRepository implements ProgrammerRepositoryInterface {
     }
 
     @Override
+    public Programmer findByUsername(String username) {
+        return null;
+    }
+
+    @Override
+    public Programmer findByCredentials(String username, String password) {
+        return null;
+    }
+
+    @Override
     public Iterable<Programmer> findAll() {
         return null;
     }
@@ -39,3 +49,5 @@ public class ProgrammerRepository implements ProgrammerRepositoryInterface {
         return false;
     }
 }
+
+

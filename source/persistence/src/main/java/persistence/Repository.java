@@ -30,7 +30,7 @@ public interface Repository<ID, E> {
      *         entity must be not null
      * @return an {@code Optional} - null if the entity was saved,
      *                             - the entity (id already exists)
-     * @throws services.CompException
+     * @throws services.ServiceException
      *            if the entity is not valid
      * @throws IllegalArgumentException
      *             if the given entity is null.     *
@@ -59,7 +59,7 @@ public interface Repository<ID, E> {
      *             - otherwise (e.g. id does not exist) returns the entity.
      * @throws IllegalArgumentException
      *             if the given entity is null.
-     * @throws services.CompException
+     * @throws services.ServiceException
      *             if the entity is not valid.
      */
     E update(E entity);
