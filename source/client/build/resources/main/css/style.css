@@ -1,7 +1,7 @@
 Button{
-    -fx-background-color: #009000;
+    -fx-background-color: #ffcc66;
 }
 
-.login-notification {
-
+GridPane{
+    -fx-background-color: #bccbde;
 }

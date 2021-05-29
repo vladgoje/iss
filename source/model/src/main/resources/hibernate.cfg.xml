@@ -18,8 +18,12 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping resource="hbm/bug.hbm.xml"/>
-        <mapping resource="hbm/verifier.hbm.xml"/>
+        <mapping class="model.Bug"/>
+        <mapping class="model.Verifier"/>
+        <mapping class="model.Programmer"/>
+        <mapping class="model.VerificationRequest"/>
+        <mapping class="model.BugSolver"/>
+
 
 
     </session-factory>

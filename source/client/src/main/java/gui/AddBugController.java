@@ -9,7 +9,7 @@ import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import model.Bug;
 import model.BugPriority;
-import model.Verifier;
+import model.BugStatus;
 import services.IService;
 import services.ServiceException;
 
@@ -21,7 +21,7 @@ public class AddBugController {
     @FXML
     private TextField textDescription;
     @FXML
-    ComboBox<String> priorityBox;
+    ComboBox<BugPriority> priorityBox;
 
     private IService server;
 
@@ -31,31 +31,33 @@ public class AddBugController {
 
     public void initialize(){
         priorityBox.setItems(FXCollections.observableArrayList(
-                BugPriority.LOW.toString(),
-                BugPriority.MEDIUM.toString(),
-                BugPriority.HIGH.toString()));
+                BugPriority.LOW,
+                BugPriority.MEDIUM,
+                BugPriority.HIGH));
     }
 
     @FXML
     public void handleAddBug(ActionEvent actionEvent) {
         String name = textName.getText();
         String desc = textDescription.getText();
-        String priorityString = priorityBox.getValue();
-        BugPriority priority = null;
-        if(priorityString.equals("LOW")){
-            priority = BugPriority.LOW;
-        }
-        if(priorityString.equals("MEDIUM")){
-            priority = BugPriority.MEDIUM;
-        }
-        if(priorityString.equals("HIGH")){
-            priority = BugPriority.HIGH;
-        }
-        Bug bug = new Bug(name, desc, priority);
+        BugPriority priority = priorityBox.getValue();
+
+        Bug bug = new Bug(name, desc, priority, BugStatus.ACTIVE);
         try{
-            server.registerBug(bug);
+            Bug added = server.registerBug(bug);
+            if(added == null){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Add bug error");
+                alert.setHeaderText("DB error");
+                alert.setContentText("Error adding bug");
+                alert.show();
+            }
         } catch (ServiceException e){
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Add bug error");
+            alert.setHeaderText("Service error");
+            alert.setContentText(e.getErrors());
+            alert.show();
         }
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }

@@ -1,19 +1,35 @@
 package services;
 
-import model.Bug;
-import model.Programmer;
-import model.Verifier;
+import model.*;
 
 import java.util.List;
 
-public interface IService {
-    void loginVerifier(Verifier verifier, IObserver client) throws ServiceException;
-    void loginProgrammer(Programmer programmer, IObserver client) throws ServiceException;
-    void logoutVerifier(Verifier verifier, IObserver client) throws ServiceException;
-    void logoutProgrammer(Programmer verifier, IObserver client) throws ServiceException;
-    void register(Verifier verifier) throws ServiceException;
-    void registerBug(Bug bug) throws ServiceException;
+public interface IService extends IObservable {
+    // employees
+    Programmer register(Programmer programmer) throws ServiceException;
+    Verifier register(Verifier verifier) throws ServiceException;
+    Employee login(Employee employee) throws ServiceException;
+    void logout(Employee employee, IObserver client) throws ServiceException;
+    List<Programmer> getProgrammers();
+
+    // bugs
+    Bug registerBug(Bug bug) throws ServiceException;
     Bug updateBug(Bug bug) throws ServiceException;
-    List<Bug> getBugs() throws ServiceException;
+    List<Bug> getBugs();
+    List<Bug> getProgrammerBugs(Long id);
     List<Bug> sortBugsByPriority();
+    List<Bug> sortBugsByPriorityProgrammer(Long id);
+    List<Bug> getActiveBugs();
+    List<Bug> getPendingBugs();
+    List<Bug> getSolvedBugs();
+    void addBugSolver(BugSolver solver);
+    void removeBugSolver(BugSolver solver);
+
+    // request
+    VerificationRequest sendRequest(VerificationRequest request);
+    VerificationRequest updateRequest(VerificationRequest request);
+    List<VerificationRequest> getAllRequests();
+    List<VerificationRequest> getProgrammerRequests(Long id);
+
+
 }

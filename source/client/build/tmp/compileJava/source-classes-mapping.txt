@@ -1,15 +1,31 @@
 gui/AddBugController.java
  gui.AddBugController
-gui/RegisterController.java
- gui.RegisterController
-gui/UpdateBugController.java
- gui.UpdateBugController
+gui/MainVerifierController.java
+ gui.MainVerifierController
+ gui.MainVerifierController$1
+ gui.MainVerifierController$2
+ gui.MainVerifierController$3
+ gui.MainVerifierController$4
+ gui.MainVerifierController$5
+ gui.MainVerifierController$BugCell
+ gui.MainVerifierController$RequestCell
 StartClient.java
  StartClient
 gui/LoginController.java
  gui.LoginController
-gui/MainController.java
- gui.MainController
- gui.MainController$1
- gui.MainController$2
- gui.MainController$BugCell
+gui/MainProgrammerController.java
+ gui.MainProgrammerController
+ gui.MainProgrammerController$1
+ gui.MainProgrammerController$2
+ gui.MainProgrammerController$3
+ gui.MainProgrammerController$4
+ gui.MainProgrammerController$5
+ gui.MainProgrammerController$BugCell
+ gui.MainProgrammerController$RequestCell
+gui/RankListController.java
+ gui.RankListController
+ gui.RankListController$ProgrammerCell
+gui/UpdateBugController.java
+ gui.UpdateBugController
+gui/RegisterController.java
+ gui.RegisterController

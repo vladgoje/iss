@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.Employee;
 import model.Programmer;
 import model.Verifier;
 import services.IService;
@@ -24,7 +25,6 @@ import java.rmi.server.UnicastRemoteObject;
 public class LoginController extends UnicastRemoteObject implements Serializable {
 
     private IService server;
-    MainController mainController;
     Parent mainParent;
     @FXML
     public Label loginNotification;
@@ -35,77 +35,65 @@ public class LoginController extends UnicastRemoteObject implements Serializable
     @FXML
     public Button registerButton;
 
-    public LoginController() throws RemoteException {
-    }
+    public LoginController() throws RemoteException { }
 
     public void setServer(IService s){
         server=s;
     }
 
-    public void setMainController(MainController mainController) { this.mainController = mainController; }
-
-    public void setMainParent(Parent mainParent) { this.mainParent = mainParent; }
-
     public void initialize(){
     }
 
     @FXML
-    public void handleVerifierLogin(ActionEvent actionEvent) {
+    public void handleLogin(ActionEvent actionEvent) {
         String username = textUsername.getText();
         String password = textPassword.getText();
-        Verifier verifier = new Verifier(username, password);
+        Employee employee = new Employee(username, password);
         try{
-            server.loginVerifier(verifier, mainController);
-            Stage stage=new Stage();
-            stage.setTitle("Main Window for " + verifier.getUsername());
-            stage.setScene(new Scene(mainParent));
+            try{
+                Employee loggedIn = server.login(employee);
+                FXMLLoader mainLoader = new FXMLLoader();
 
-            stage.setOnCloseRequest(event -> {
-                mainController.logoutVerifier();
-                System.exit(0);
-            });
+                Stage stage=new Stage();
+                stage.setTitle("Bug Tracking System " + employee.getUsername());
 
-            stage.setMaximized(false);
-            stage.setMaximized(true);
-            stage.show();
-            mainController.setConnectedVerifier(verifier);
-            mainController.initialize();
 
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                if(loggedIn instanceof Programmer){
+                    mainLoader.setLocation(getClass().getResource("/views/ProgrammerMainView.fxml"));
+                    this.mainParent = mainLoader.load();
+                    MainProgrammerController mainController = mainLoader.getController();
+                    mainController.setServer(server);
+                    mainController.setConnectedProgrammer((Programmer) loggedIn);
+                    mainController.initialize();
+                    stage.setScene(new Scene(mainParent));
+                    stage.setOnCloseRequest(event -> {
+                        mainController.logout();
+                        System.exit(0);
+                    });
+                } else {
+                    mainLoader.setLocation(getClass().getResource("/views/VerifierMainView.fxml"));
+                    this.mainParent = mainLoader.load();
+                    MainVerifierController mainController = mainLoader.getController();
+                    mainController.setServer(server);
+                    mainController.setConnectedVerifier((Verifier) loggedIn);
+                    mainController.initialize();
+                    stage.setScene(new Scene(mainParent));
+                    stage.setOnCloseRequest(event -> {
+                        mainController.logout();
+                        System.exit(0);
+                    });
+                }
 
+                stage.show();
+                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+
+            } catch (IOException e){
+                e.printStackTrace();
+            }
         } catch(ServiceException e) {
-            loginNotification.setText(e.getErrors());
+            loginNotification.setText(e.getMessage());
         }
     }
-
-    public void handleProgrammerLogin(ActionEvent actionEvent) {
-        String username = textUsername.getText();
-        String password = textPassword.getText();
-        Programmer programmer = new Programmer(username, password);
-        try{
-            server.loginProgrammer(programmer, mainController);
-            Stage stage=new Stage();
-            stage.setTitle("Main Window for " + programmer.getUsername());
-            stage.setScene(new Scene(mainParent));
-
-            stage.setOnCloseRequest(event -> {
-                mainController.logoutProgrammer();
-                System.exit(0);
-            });
-
-            stage.setMaximized(false);
-            stage.setMaximized(true);
-            stage.show();
-            mainController.setConnectedProgrammer(programmer);
-            mainController.initModel();
-
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-
-        } catch(ServiceException e) {
-            loginNotification.setText(e.getErrors());
-        }
-    }
-
 
     @FXML
     public void handleRegister(){

@@ -4,14 +4,25 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="model.Verifier"
-           table="VERIFIERS">
-        <id name="id" column="VERIFIER_ID">
+    <class name="model.Employee" table="employees" discriminator-value="P">
+
+        <discriminator column="DISCRIMINATOR" type="string" />
+
+        <id name="id" column="EMPLOYEE_ID">
             <generator class="increment"/>
         </id>
         <property name="username" column="USERNAME"/>
         <property name="password" column="PASSWORD"/>
         <property name="salary" column="SALARY"/>
+
+        <subclass name="model.Verifier" extends="model.Employee">
+            <key column="id" />
+        </subclass>
+
+        <subclass name="model.Programmer" extends="model.Employee">
+            <key column="id" />
+        </subclass>
+
 
     </class>
 </hibernate-mapping>

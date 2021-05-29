@@ -6,11 +6,13 @@
     <bean id="bugRepo" class="persistence.HbmRepository.BugRepository"/>
     <bean id="veriferRepo" class="persistence.HbmRepository.VerifierRepository"/>
     <bean id="programmerRepo" class="persistence.HbmRepository.ProgrammerRepository"/>
+    <bean id="requestRepo" class="persistence.HbmRepository.RequestRepository"/>
 
     <bean id="bugTrackingSystemService" class="server.Service">
         <constructor-arg ref="bugRepo"/>
         <constructor-arg ref="veriferRepo"/>
         <constructor-arg ref="programmerRepo"/>
+        <constructor-arg ref="requestRepo"/>
     </bean>
 
 

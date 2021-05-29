@@ -1,5 +1,4 @@
 import gui.LoginController;
-import gui.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -58,18 +57,8 @@ public class StartClient extends Application {
         LoginController loginController = loginLoader.getController();
         loginController.setServer(server);
 
-
-        FXMLLoader mainLoader = new FXMLLoader();
-        mainLoader.setLocation(getClass().getResource("/views/VerifierMainView.fxml"));
-        Parent mainRoot = mainLoader.load();
-        MainController mainController = mainLoader.getController();
-        mainController.setServer(server);
-
-        loginController.setMainController(mainController);
-        loginController.setMainParent(mainRoot);
-
-        primaryStage.setTitle("MPP chat");
-        primaryStage.setScene(new Scene(loginRoot, 1000, 600));
+        primaryStage.setTitle("Bug Tracking System - Login");
+        primaryStage.setScene(new Scene(loginRoot, 600, 400));
         primaryStage.show();
 
     }

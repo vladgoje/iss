@@ -1,30 +1,30 @@
 package persistence.HbmRepository;
 
-import model.Employee;
+import model.VerificationRequest;
 import model.Verifier;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import persistence.VerifierRepositoryInterface;
+import persistence.RequestRepositoryInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VerifierRepository implements VerifierRepositoryInterface {
+public class RequestRepository implements RequestRepositoryInterface {
     DbUtils dbUtils;
 
-    public VerifierRepository() {
+    public RequestRepository() {
         this.dbUtils = new DbUtils();
     }
 
     @Override
-    public Verifier findOne(Long aLong) {
+    public VerificationRequest findOne(Long aLong) {
         try(Session session = dbUtils.getSessionFactory().openSession()) {
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
-                Verifier verifier = session.createQuery("from Verifier v where v.id like :id", Verifier.class).setParameter("id", aLong).setMaxResults(1).uniqueResult();
+                VerificationRequest request = session.createQuery("from VerificationRequest b where b.id like :id", VerificationRequest.class).setParameter("id", aLong).setMaxResults(1).uniqueResult();
                 tx.commit();
-                return verifier;
+                return request;
             } catch (RuntimeException ex) {
                 if (tx != null)
                     tx.rollback();
@@ -34,51 +34,14 @@ public class VerifierRepository implements VerifierRepositoryInterface {
     }
 
     @Override
-    public Verifier findByUsername(String username) {
+    public Iterable<VerificationRequest> findAll() {
         try(Session session = dbUtils.getSessionFactory().openSession()) {
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
-                Verifier verifier = session.createQuery("from Verifier v where v.username like :username", Verifier.class).setParameter("username", username).setMaxResults(1).uniqueResult();
+                List<VerificationRequest> requests = session.createQuery("from VerificationRequest", VerificationRequest.class).list();
                 tx.commit();
-                return verifier;
-            } catch (RuntimeException ex) {
-                if (tx != null)
-                    tx.rollback();
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Verifier findByCredentials(String username, String password) {
-        try(Session session = dbUtils.getSessionFactory().openSession()) {
-            Transaction tx = null;
-            try {
-                tx = session.beginTransaction();
-                Verifier verifier = session.createQuery("from Verifier v where v.username like :username and v.password like :password", Verifier.class)
-                        .setParameter("username", username)
-                        .setParameter("password", password)
-                        .setMaxResults(1).uniqueResult();
-                tx.commit();
-                return verifier;
-            } catch (RuntimeException ex) {
-                if (tx != null)
-                    tx.rollback();
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Iterable<Verifier> findAll() {
-        try(Session session = dbUtils.getSessionFactory().openSession()) {
-            Transaction tx = null;
-            try {
-                tx = session.beginTransaction();
-                List<Verifier> verifiers = session.createQuery("from Verifier", Verifier.class).list();
-                tx.commit();
-                return verifiers;
+                return requests;
             } catch (RuntimeException ex) {
                 if (tx != null)
                     tx.rollback();
@@ -88,13 +51,14 @@ public class VerifierRepository implements VerifierRepositoryInterface {
     }
 
     @Override
-    public Verifier save(Verifier entity) {
+    public VerificationRequest save(VerificationRequest entity) {
         try(Session session = dbUtils.getSessionFactory().openSession()) {
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
                 session.save(entity);
                 tx.commit();
+
                 return entity;
             } catch (RuntimeException ex) {
                 if (tx != null)
@@ -105,13 +69,12 @@ public class VerifierRepository implements VerifierRepositoryInterface {
     }
 
     @Override
-    public Verifier delete(Long aLong) {
+    public VerificationRequest delete(Long aLong) {
         try(Session session = dbUtils.getSessionFactory().openSession()) {
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
-
-                Verifier crit = session.createQuery("from Verifier where v.id like :id", Verifier.class)
+                VerificationRequest crit = session.createQuery("from VerificationRequest b where b.id like :id", VerificationRequest.class)
                         .setParameter("id", aLong)
                         .setMaxResults(1)
                         .uniqueResult();
@@ -127,16 +90,16 @@ public class VerifierRepository implements VerifierRepositoryInterface {
     }
 
     @Override
-    public Verifier update(Verifier entity) {
+    public VerificationRequest update(VerificationRequest entity) {
         try(Session session = dbUtils.getSessionFactory().openSession()){
             Transaction tx=null;
             try{
                 tx = session.beginTransaction();
-                Verifier verifier = session.load( Verifier.class, entity.getId());
-                verifier.setUsername(entity.getUsername());
-                verifier.setPassword(entity.getPassword());
-                verifier.setSalary(entity.getSalary());
-                session.update(verifier);
+                VerificationRequest request = session.load( VerificationRequest.class, entity.getId());
+                request.setBug(entity.getBug());
+                request.setProgrammer(entity.getProgrammer());
+                request.setStatus(entity.getStatus());
+                session.update(request);
                 tx.commit();
                 return entity;
             } catch(RuntimeException ex){
@@ -153,7 +116,7 @@ public class VerifierRepository implements VerifierRepositoryInterface {
             Transaction tx = null;
             try {
                 tx = session.beginTransaction();
-                int count = (int) session.createQuery("select count(*) from Verifier")
+                int count = (int) session.createQuery("select count(*) from VerificationRequest")
                         .setMaxResults(1).uniqueResult();
                 tx.commit();
                 return count;
@@ -169,5 +132,4 @@ public class VerifierRepository implements VerifierRepositoryInterface {
     public boolean exists(Long id) {
         return findOne(id) != null;
     }
-
 }

@@ -1,10 +1,18 @@
-model/Programmer.java
- model.Programmer
 model/BugPriority.java
  model.BugPriority
+model/BugStatus.java
+ model.BugStatus
 model/Employee.java
  model.Employee
-model/Verifier.java
- model.Verifier
 model/Bug.java
  model.Bug
+model/Verifier.java
+ model.Verifier
+model/VerificationRequest.java
+ model.VerificationRequest
+model/Programmer.java
+ model.Programmer
+model/RequestStatus.java
+ model.RequestStatus
+model/BugSolver.java
+ model.BugSolver

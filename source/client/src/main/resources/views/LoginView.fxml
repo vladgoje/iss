@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="300.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #333333;" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
+<AnchorPane minHeight="300.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0" stylesheets="/css/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.LoginController">
     <children>
         <GridPane alignment="CENTER" minHeight="300.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <columnConstraints>
@@ -19,8 +19,8 @@
                 <RowConstraints maxHeight="100.0" minHeight="100.0" prefHeight="73.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Label text="Username" textFill="WHITE" GridPane.rowIndex="1" />
-                <Label text="Password" textFill="WHITE" GridPane.rowIndex="2" />
+                <Label text="Username" GridPane.rowIndex="1" />
+                <Label text="Password" GridPane.rowIndex="2" />
                 <TextField fx:id="textUsername" promptText="username" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <GridPane.margin>
                         <Insets left="10.0" right="10.0" />
@@ -33,12 +33,12 @@
                 </PasswordField>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <children>
-                        <Button mnemonicParsing="false" onAction="#handleVerifierLogin" style="-fx-background-color: #008000;" text="Login">
+                        <Button mnemonicParsing="false" onAction="#handleLogin" text="Login">
                             <HBox.margin>
                                 <Insets left="10.0" right="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegister" style="-fx-background-color: #008000;" text="Register">
+                        <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegister" text="Register">
                             <HBox.margin>
                                 <Insets left="10.0" right="10.0" />
                             </HBox.margin>

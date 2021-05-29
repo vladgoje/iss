@@ -1,16 +1,20 @@
 persistence/HbmRepository/DbUtils.java
  persistence.HbmRepository.DbUtils
-persistence/ProgrammerRepositoryInterface.java
- persistence.ProgrammerRepositoryInterface
-persistence/HbmRepository/BugRepository.java
- persistence.HbmRepository.BugRepository
-persistence/VerifierRepositoryInterface.java
- persistence.VerifierRepositoryInterface
-persistence/HbmRepository/ProgrammerRepository.java
- persistence.HbmRepository.ProgrammerRepository
-persistence/BugRepositoryInterface.java
- persistence.BugRepositoryInterface
+persistence/HbmRepository/RequestRepository.java
+ persistence.HbmRepository.RequestRepository
 persistence/Repository.java
  persistence.Repository
+persistence/HbmRepository/BugRepository.java
+ persistence.HbmRepository.BugRepository
 persistence/HbmRepository/VerifierRepository.java
  persistence.HbmRepository.VerifierRepository
+persistence/VerifierRepositoryInterface.java
+ persistence.VerifierRepositoryInterface
+persistence/RequestRepositoryInterface.java
+ persistence.RequestRepositoryInterface
+persistence/ProgrammerRepositoryInterface.java
+ persistence.ProgrammerRepositoryInterface
+persistence/BugRepositoryInterface.java
+ persistence.BugRepositoryInterface
+persistence/HbmRepository/ProgrammerRepository.java
+ persistence.HbmRepository.ProgrammerRepository

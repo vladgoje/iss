@@ -1,6 +1,7 @@
 package persistence.HbmRepository;
 
 import model.Bug;
+import model.BugSolver;
 import model.Verifier;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -59,11 +60,7 @@ public class BugRepository implements BugRepositoryInterface {
                 session.save(entity);
                 tx.commit();
 
-
-                tx = session.beginTransaction();
-                List<Bug> bugs = session.createQuery("FROM Bug b ORDER BY b.id DESC", Bug.class).setMaxResults(1).list();
-                tx.commit();
-                return bugs.get(0);
+                return entity;
             } catch (RuntimeException ex) {
                 if (tx != null)
                     tx.rollback();
@@ -103,6 +100,7 @@ public class BugRepository implements BugRepositoryInterface {
                 bug.setName(entity.getName());
                 bug.setDescription(entity.getDescription());
                 bug.setPriority(entity.getPriority());
+                bug.setStatus(entity.getStatus());
                 session.update(bug);
                 tx.commit();
                 return entity;
@@ -136,4 +134,61 @@ public class BugRepository implements BugRepositoryInterface {
     public boolean exists(Long id) {
         return findOne(id) != null;
     }
+
+    @Override
+    public void addBugSolver(BugSolver solver) {
+        try(Session session = dbUtils.getSessionFactory().openSession()) {
+            Transaction tx = null;
+            try {
+                tx = session.beginTransaction();
+                session.save(solver);
+                tx.commit();
+            } catch (RuntimeException ex) {
+                if (tx != null)
+                    tx.rollback();
+            }
+        }
+    }
+
+    @Override
+    public void removeBugSolver(BugSolver solver) {
+        try(Session session = dbUtils.getSessionFactory().openSession()) {
+            Transaction tx = null;
+            try {
+                tx = session.beginTransaction();
+                BugSolver crit = session.createQuery("from BugSolver b where b.bugId like :bid and b.programmerId like :pid", BugSolver.class)
+                        .setParameter("bid", solver.getBugId())
+                        .setParameter("pid", solver.getProgrammerId())
+                        .setMaxResults(1)
+                        .uniqueResult();
+                session.delete(crit);
+                tx.commit();
+            } catch (RuntimeException ex) {
+                if (tx != null)
+                    tx.rollback();
+            }
+        }
+    }
+
+    @Override
+    public boolean existsSolver(BugSolver solver){
+        try(Session session = dbUtils.getSessionFactory().openSession()) {
+            Transaction tx = null;
+            try {
+                tx = session.beginTransaction();
+                BugSolver found = session.createQuery("from BugSolver b where b.bugId like :bid and b.programmerId like :pid", BugSolver.class)
+                        .setParameter("bid", solver.getBugId())
+                        .setParameter("pid", solver.getProgrammerId())
+                        .setMaxResults(1)
+                        .uniqueResult();
+                tx.commit();
+                return found != null;
+            } catch (RuntimeException ex) {
+                if (tx != null)
+                    tx.rollback();
+            }
+        }
+        return false;
+    }
+
 }

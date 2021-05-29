@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>gui.AddBugController</OriginalElement>
+  <nodes>
+    <node x="309.75" y="985.0">gui.LoginController</node>
+    <node x="1376.9270000000001" y="777.0">javafx.fxml.Initializable</node>
+    <node x="1691.5150000000006" y="596.0">model.Verifier</node>
+    <node x="1671.1758333333335" y="0.0">javax.persistence.MappedSuperclass</node>
+    <node x="0.0" y="1596.0">gui.AddBugController</node>
+    <node x="221.75" y="562.0">model.BugStatus</node>
+    <node x="363.0" y="1227.0">javafx.application.Application</node>
+    <node x="147.0" y="262.0">java.lang.Enum</node>
+    <node x="923.9999999999999" y="1387.0">persistence.HbmRepository.ProgrammerRepository</node>
+    <node x="764.25" y="540.0">model.Bug</node>
+    <node x="1099.9999999999998" y="1227.0">persistence.Repository</node>
+    <node x="1223.9999999999998" y="1387.0">persistence.HbmRepository.BugRepository</node>
+    <node x="1180.3333333333335" y="285.0">javax.persistence.Entity</node>
+    <node x="1152.25" y="562.0">model.BugSolver</node>
+    <node x="528.25" y="584.0">java.lang.Exception</node>
+    <node x="959.8436666666666" y="0.0">java.io.Serializable</node>
+    <node x="289.0" y="1596.0">gui.RegisterController</node>
+    <node x="526.0" y="1596.0">persistence.HbmRepository.DbUtils</node>
+    <node x="91.0" y="1227.0">services.IObservable</node>
+    <node x="1508.692166666667" y="952.0">gui.MainProgrammerController</node>
+    <node x="1741.0" y="1227.0">gui.UpdateBugController</node>
+    <node x="961.0" y="1596.0">services.Validator</node>
+    <node x="1338.1133333333335" y="562.0">model.Programmer</node>
+    <node x="362.75" y="562.0">model.BugPriority</node>
+    <node x="475.25" y="130.0">java.lang.Throwable</node>
+    <node x="611.9999999999999" y="1307.0">persistence.RequestRepositoryInterface</node>
+    <node x="388.0" y="1397.0">StartClient</node>
+    <node x="887.9999999999999" y="1307.0">persistence.ProgrammerRepositoryInterface</node>
+    <node x="69.75" y="1307.0">services.IService</node>
+    <node x="1645.5150000000006" y="240.0">model.Employee</node>
+    <node x="878.6666666666666" y="285.0">javax.persistence.Table</node>
+    <node x="1432.0" y="1307.0">persistence.VerifierRepositoryInterface</node>
+    <node x="0.0" y="1387.0">server.Service</node>
+    <node x="923.4525000000006" y="732.0">java.rmi.server.UnicastRemoteObject</node>
+    <node x="753.3900000000004" y="1018.0">gui.RankListController</node>
+    <node x="932.25" y="551.0">model.VerificationRequest</node>
+    <node x="1947.6758333333335" y="777.0">services.IObserver</node>
+    <node x="1468.0" y="1387.0">persistence.HbmRepository.VerifierRepository</node>
+    <node x="49.75" y="562.0">model.RequestStatus</node>
+    <node x="1932.6758333333335" y="0.0">java.rmi.Remote</node>
+    <node x="647.9999999999999" y="1387.0">persistence.HbmRepository.RequestRepository</node>
+    <node x="1823.5150000000006" y="573.0">java.rmi.server.RemoteServer</node>
+    <node x="1823.5150000000006" y="262.0">java.rmi.server.RemoteObject</node>
+    <node x="1187.9999999999998" y="1307.0">persistence.BugRepositoryInterface</node>
+    <node x="0.0" y="0.0">java.lang.constant.Constable</node>
+    <node x="1167.692166666667" y="974.0">gui.MainVerifierController</node>
+    <node x="521.25" y="765.0">services.ServiceException</node>
+    <node x="140.0" y="0.0">java.lang.Comparable</node>
+    <node x="780.0" y="1596.0">StartServer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.Bug" target="javax.persistence.Entity">
+      <point x="49.333333333333485" y="-71.0" />
+      <point x="887.5833333333335" y="510.0" />
+      <point x="1189.9333333333334" y="510.0" />
+      <point x="-38.40000000000009" y="15.0" />
+    </edge>
+    <edge source="gui.MainProgrammerController" target="services.IObserver">
+      <point x="120.375" y="-115.0" />
+      <point x="1789.567166666667" y="932.0" />
+      <point x="2037.6758333333335" y="932.0" />
+      <point x="30.0" y="15.0" />
+    </edge>
+    <edge source="model.Bug" target="java.io.Serializable">
+      <point x="-49.33333333333326" y="-71.0" />
+      <point x="788.9166666666667" y="520.0" />
+      <point x="776.1333333333334" y="520.0" />
+      <point x="776.1333333333334" y="110.0" />
+      <point x="1022.2436666666667" y="110.0" />
+      <point x="-9.599999999999909" y="15.0" />
+    </edge>
+    <edge source="java.rmi.server.RemoteObject" target="java.io.Serializable">
+      <point x="-40.5" y="-38.0" />
+      <point x="1864.0150000000006" y="50.0" />
+      <point x="1099.0436666666665" y="50.0" />
+      <point x="67.19999999999982" y="15.0" />
+    </edge>
+    <edge source="StartClient" target="javafx.application.Application">
+      <point x="0.0" y="-49.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="java.rmi.server.UnicastRemoteObject" target="java.rmi.server.RemoteServer">
+      <point x="1.1368683772161603E-13" y="-60.0" />
+      <point x="1023.4525000000006" y="707.0" />
+      <point x="1904.5150000000006" y="707.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="services.ServiceException" target="java.lang.Exception">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="27.0" />
+    </edge>
+    <edge source="model.VerificationRequest" target="java.io.Serializable">
+      <point x="0.0" y="-60.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="persistence.BugRepositoryInterface" target="persistence.Repository">
+      <point x="0.0" y="-15.0" />
+      <point x="1299.9999999999998" y="1287.0" />
+      <point x="1179.9999999999998" y="1287.0" />
+      <point x="16.0" y="15.0" />
+    </edge>
+    <edge source="server.Service" target="services.IService">
+      <point x="-79.5" y="-82.0" />
+      <point x="79.5" y="1362.0" />
+      <point x="125.75" y="1362.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="persistence.HbmRepository.BugRepository" target="persistence.BugRepositoryInterface">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="persistence.VerifierRepositoryInterface" target="persistence.Repository">
+      <point x="0.0" y="-15.0" />
+      <point x="1564.0" y="1277.0" />
+      <point x="1211.9999999999998" y="1277.0" />
+      <point x="48.0" y="15.0" />
+    </edge>
+    <edge source="gui.MainVerifierController" target="java.rmi.server.UnicastRemoteObject">
+      <point x="-120.375" y="-93.0" />
+      <point x="1207.817166666667" y="892.0" />
+      <point x="1048.4525000000006" y="892.0" />
+      <point x="25.0" y="60.0" />
+    </edge>
+    <edge source="persistence.HbmRepository.ProgrammerRepository" target="persistence.ProgrammerRepositoryInterface">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="server.Service" target="services.IObservable">
+      <point x="79.5" y="-82.0" />
+      <point x="238.5" y="1362.0" />
+      <point x="192.25" y="1362.0" />
+      <point x="34.0" y="15.0" />
+    </edge>
+    <edge source="model.VerificationRequest" target="javax.persistence.Entity">
+      <point x="66.66666666666674" y="-60.0" />
+      <point x="1098.9166666666667" y="520.0" />
+      <point x="1209.1333333333332" y="520.0" />
+      <point x="-19.200000000000045" y="15.0" />
+    </edge>
+    <edge source="model.Verifier" target="model.Employee">
+      <point x="0.0" y="-15.0" />
+      <point x="34.0" y="60.0" />
+    </edge>
+    <edge source="java.rmi.server.RemoteServer" target="java.rmi.server.RemoteObject">
+      <point x="0.0" y="-38.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="gui.MainVerifierController" target="java.io.Serializable">
+      <point x="-40.125" y="-93.0" />
+      <point x="1288.067166666667" y="892.0" />
+      <point x="1320.75" y="892.0" />
+      <point x="1320.75" y="100.0" />
+      <point x="1051.0436666666667" y="100.0" />
+      <point x="19.200000000000045" y="15.0" />
+    </edge>
+    <edge source="model.BugSolver" target="javax.persistence.Table">
+      <point x="-52.66666666666674" y="-49.0" />
+      <point x="1178.5833333333333" y="490.0" />
+      <point x="951.9999999999999" y="490.0" />
+      <point x="29.333333333333258" y="15.0" />
+    </edge>
+    <edge source="model.Programmer" target="java.io.Serializable">
+      <point x="0.0" y="-49.0" />
+      <point x="1454.1133333333335" y="90.0" />
+      <point x="1060.6436666666666" y="90.0" />
+      <point x="28.799999999999955" y="15.0" />
+    </edge>
+    <edge source="model.Employee" target="javax.persistence.MappedSuperclass">
+      <point x="34.0" y="-60.0" />
+      <point x="1747.5150000000006" y="110.0" />
+      <point x="1759.1758333333335" y="110.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="model.Verifier" target="javax.persistence.Entity">
+      <point x="-37.333333333333485" y="-15.0" />
+      <point x="1710.181666666667" y="500.0" />
+      <point x="1266.7333333333336" y="500.0" />
+      <point x="38.40000000000009" y="15.0" />
+    </edge>
+    <edge source="gui.MainVerifierController" target="javafx.fxml.Initializable">
+      <point x="40.125" y="-93.0" />
+      <point x="1368.317166666667" y="912.0" />
+      <point x="1452.9270000000001" y="912.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="persistence.HbmRepository.VerifierRepository" target="persistence.VerifierRepositoryInterface">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="model.Programmer" target="javax.persistence.Entity">
+      <point x="-77.33333333333348" y="-49.0" />
+      <point x="1376.78" y="510.0" />
+      <point x="1247.5333333333333" y="510.0" />
+      <point x="19.199999999999818" y="15.0" />
+    </edge>
+    <edge source="gui.LoginController" target="java.rmi.server.UnicastRemoteObject">
+      <point x="42.5" y="-82.0" />
+      <point x="437.25" y="922.0" />
+      <point x="948.4525000000006" y="922.0" />
+      <point x="-75.0" y="60.0" />
+    </edge>
+    <edge source="persistence.RequestRepositoryInterface" target="persistence.Repository">
+      <point x="0.0" y="-15.0" />
+      <point x="739.9999999999999" y="1277.0" />
+      <point x="1115.9999999999998" y="1277.0" />
+      <point x="-48.0" y="15.0" />
+    </edge>
+    <edge source="gui.RankListController" target="java.rmi.server.UnicastRemoteObject">
+      <point x="-1.1368683772161603E-13" y="-49.0" />
+      <point x="913.3900000000003" y="932.0" />
+      <point x="998.4525000000006" y="932.0" />
+      <point x="-25.0" y="60.0" />
+    </edge>
+    <edge source="model.Verifier" target="java.io.Serializable">
+      <point x="37.333333333333485" y="-15.0" />
+      <point x="1784.848333333334" y="520.0" />
+      <point x="1802.5150000000006" y="520.0" />
+      <point x="1802.5150000000006" y="60.0" />
+      <point x="1089.4436666666666" y="60.0" />
+      <point x="57.59999999999991" y="15.0" />
+    </edge>
+    <edge source="gui.RankListController" target="javafx.fxml.Initializable">
+      <point x="106.66666666666652" y="-49.0" />
+      <point x="1020.056666666667" y="902.0" />
+      <point x="1402.2603333333334" y="902.0" />
+      <point x="-50.66666666666674" y="15.0" />
+    </edge>
+    <edge source="model.BugSolver" target="java.io.Serializable">
+      <point x="52.66666666666674" y="-49.0" />
+      <point x="1283.9166666666667" y="520.0" />
+      <point x="1286.8333333333335" y="520.0" />
+      <point x="1286.8333333333335" y="110.0" />
+      <point x="1041.4436666666666" y="110.0" />
+      <point x="9.599999999999909" y="15.0" />
+    </edge>
+    <edge source="model.BugSolver" target="javax.persistence.Entity">
+      <point x="0.0" y="-49.0" />
+      <point x="1231.25" y="520.0" />
+      <point x="1228.3333333333335" y="520.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="services.IObserver" target="java.rmi.Remote">
+      <point x="0.0" y="-15.0" />
+      <point x="2007.6758333333335" y="110.0" />
+      <point x="2004.6758333333335" y="110.0" />
+      <point x="24.0" y="15.0" />
+    </edge>
+    <edge source="java.lang.Throwable" target="java.io.Serializable">
+      <point x="0.0" y="-170.0" />
+      <point x="609.25" y="90.0" />
+      <point x="1003.0436666666667" y="90.0" />
+      <point x="-28.799999999999955" y="15.0" />
+    </edge>
+    <edge source="model.RequestStatus" target="java.lang.Enum">
+      <point x="0.0" y="-49.0" />
+      <point x="125.75" y="520.0" />
+      <point x="166.0" y="520.0" />
+      <point x="-38.0" y="38.0" />
+    </edge>
+    <edge source="gui.MainVerifierController" target="services.IObserver">
+      <point x="120.375" y="-93.0" />
+      <point x="1448.567166666667" y="922.0" />
+      <point x="1977.6758333333335" y="922.0" />
+      <point x="-30.0" y="15.0" />
+    </edge>
+    <edge source="gui.MainProgrammerController" target="java.rmi.server.UnicastRemoteObject">
+      <point x="-120.375" y="-115.0" />
+      <point x="1548.817166666667" y="882.0" />
+      <point x="1098.4525000000006" y="882.0" />
+      <point x="75.00000000000011" y="60.0" />
+    </edge>
+    <edge source="model.BugStatus" target="java.io.Serializable">
+      <point x="30.0" y="-49.0" />
+      <point x="311.75" y="60.0" />
+      <point x="974.2436666666667" y="60.0" />
+      <point x="-57.59999999999991" y="15.0" />
+    </edge>
+    <edge source="persistence.HbmRepository.RequestRepository" target="persistence.RequestRepositoryInterface">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.constant.Constable">
+      <point x="-38.0" y="-38.0" />
+      <point x="166.0" y="110.0" />
+      <point x="60.0" y="110.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="gui.MainProgrammerController" target="java.io.Serializable">
+      <point x="40.125" y="-115.0" />
+      <point x="1709.317166666667" y="912.0" />
+      <point x="1635.0150000000006" y="912.0" />
+      <point x="1635.0150000000006" y="80.0" />
+      <point x="1070.2436666666665" y="80.0" />
+      <point x="38.399999999999864" y="15.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.lang.Comparable">
+      <point x="0.0" y="-38.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="model.Programmer" target="model.Employee">
+      <point x="77.33333333333348" y="-49.0" />
+      <point x="1531.446666666667" y="520.0" />
+      <point x="1679.5150000000006" y="520.0" />
+      <point x="-34.0" y="60.0" />
+    </edge>
+    <edge source="gui.MainProgrammerController" target="javafx.fxml.Initializable">
+      <point x="-40.125" y="-115.0" />
+      <point x="1629.067166666667" y="872.0" />
+      <point x="1503.5936666666669" y="872.0" />
+      <point x="50.66666666666674" y="15.0" />
+    </edge>
+    <edge source="model.VerificationRequest" target="javax.persistence.Table">
+      <point x="-66.66666666666674" y="-60.0" />
+      <point x="965.5833333333333" y="500.0" />
+      <point x="922.6666666666666" y="500.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="model.BugStatus" target="java.lang.Enum">
+      <point x="-30.0" y="-49.0" />
+      <point x="251.75" y="520.0" />
+      <point x="204.0" y="520.0" />
+      <point x="0.0" y="38.0" />
+    </edge>
+    <edge source="gui.LoginController" target="java.io.Serializable">
+      <point x="-42.5" y="-82.0" />
+      <point x="352.25" y="70.0" />
+      <point x="983.8436666666666" y="70.0" />
+      <point x="-48.0" y="15.0" />
+    </edge>
+    <edge source="model.BugPriority" target="java.io.Serializable">
+      <point x="34.0" y="-49.0" />
+      <point x="464.75" y="80.0" />
+      <point x="993.4436666666666" y="80.0" />
+      <point x="-38.40000000000009" y="15.0" />
+    </edge>
+    <edge source="java.rmi.server.RemoteObject" target="java.rmi.Remote">
+      <point x="40.5" y="-38.0" />
+      <point x="1945.0150000000006" y="110.0" />
+      <point x="1956.6758333333335" y="110.0" />
+      <point x="-24.0" y="15.0" />
+    </edge>
+    <edge source="java.lang.Exception" target="java.lang.Throwable">
+      <point x="0.0" y="-27.0" />
+      <point x="0.0" y="170.0" />
+    </edge>
+    <edge source="java.lang.Enum" target="java.io.Serializable">
+      <point x="38.0" y="-38.0" />
+      <point x="242.0" y="50.0" />
+      <point x="964.6436666666666" y="50.0" />
+      <point x="-67.20000000000005" y="15.0" />
+    </edge>
+    <edge source="model.Bug" target="javax.persistence.Table">
+      <point x="0.0" y="-71.0" />
+      <point x="838.25" y="500.0" />
+      <point x="893.3333333333334" y="500.0" />
+      <point x="-29.333333333333258" y="15.0" />
+    </edge>
+    <edge source="model.Employee" target="java.io.Serializable">
+      <point x="-34.0" y="-60.0" />
+      <point x="1679.5150000000006" y="70.0" />
+      <point x="1079.8436666666666" y="70.0" />
+      <point x="48.0" y="15.0" />
+    </edge>
+    <edge source="model.BugPriority" target="java.lang.Enum">
+      <point x="-34.0" y="-49.0" />
+      <point x="396.75" y="510.0" />
+      <point x="242.0" y="510.0" />
+      <point x="38.0" y="38.0" />
+    </edge>
+    <edge source="services.IService" target="services.IObservable">
+      <point x="0.0" y="-15.0" />
+      <point x="-34.0" y="15.0" />
+    </edge>
+    <edge source="persistence.ProgrammerRepositoryInterface" target="persistence.Repository">
+      <point x="0.0" y="-15.0" />
+      <point x="1028.0" y="1287.0" />
+      <point x="1147.9999999999998" y="1287.0" />
+      <point x="-16.0" y="15.0" />
+    </edge>
+    <edge source="gui.RankListController" target="java.io.Serializable">
+      <point x="-106.66666666666686" y="-49.0" />
+      <point x="806.7233333333336" y="912.0" />
+      <point x="753.75" y="912.0" />
+      <point x="753.75" y="100.0" />
+      <point x="1012.6436666666666" y="100.0" />
+      <point x="-19.200000000000045" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6000000000000001" x="1733.9999999999995" y="710.9999999999995" />
+  <SelectedNodes>
+    <node>gui.AddBugController</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
